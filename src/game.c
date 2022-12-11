@@ -4,6 +4,7 @@
 #include <ncurses.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
 
 void ngame(PLAYER *P)
 {
@@ -14,7 +15,8 @@ void ngame(PLAYER *P)
     system("clear");
     printf("Nickname (Max 20 characters): ");
     setbuf(stdin, NULL);    // clear stdin buffer
-    gets(P->name);   // introduce player's name
+    fgets(P->name, 20, stdin);   // introduce player's name
+    strtok(P->name, "\n");
     printf("Choose your color:\n");
     printf("1. Yellow\n2. Green\n3. Blue\n4. Red\n");
     printf("> ");
