@@ -77,6 +77,5 @@ int main(int argc, char *argv[])
         }
     } while (select > 4);
 
-    exit_vlc();
     exit(EXIT_SUCCESS);
 }

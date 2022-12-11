@@ -9,18 +9,20 @@
 void ngame(PLAYER *P)
 {
     unsigned short int sel;
-
-    init_vlc();
+    
+    init_music();
     sleep(1);
     system("clear");
     printf("Nickname (Max 20 characters): ");
     setbuf(stdin, NULL);    // clear stdin buffer
     fgets(P->name, 20, stdin);   // introduce player's name
-    strtok(P->name, "\n");
+    strtok(P->name, "\n"); // clear \n of fgets
     printf("Choose your color:\n");
     printf("1. Yellow\n2. Green\n3. Blue\n4. Red\n");
     printf("> ");
     scanf("%hu", &sel);     // introduce player's color
+    exit_vlc();
+    game_music();
 
     if (sel == 1)
         P->cstate = (COLOR)3; // yellow
@@ -103,7 +105,7 @@ void start()
             printw(" ");
             y++;
             if (y == (dim_y - 1))
-                y--;
+            y--;
             move(y, x);
             printw("v");
         }
@@ -136,9 +138,8 @@ void start()
     }
     clear();
     refresh();
-    exit_vlc();
     endwin();                      // end ncurses
     system("clear");
 
-    return;
+  return;
 }

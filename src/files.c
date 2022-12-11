@@ -28,7 +28,7 @@ void init_dir()
     strcpy(user, getlogin());
     strcat(dir, user);
 
-    strcat(dir, "/.config/vector2/");
+    strcat(dir, "/.vector/");
 
     if (mkdir(dir, S_IRWXU | S_IRWXG | S_IRWXO) == -1) // game files folder
     {
@@ -40,7 +40,7 @@ void init_dir()
     }
 
     strcpy(dir2, dir);
-    strcat(dir2, "config/");
+    strcat(dir2, "conf/");
 
     if (mkdir(dir2, S_IRWXU | S_IRWXG | S_IRWXO) == -1) // game configurations folder
     {
@@ -60,7 +60,7 @@ void LoadOptions(OPTION *O)
     char dirl[200];
 
     strcpy(dirl, dir2);
-    strcat(dirl, "options");
+    strcat(dirl, "options.bin");
 
     if ((fPtr = fopen(dirl, "rb")) == NULL)
         return;
@@ -77,7 +77,7 @@ void SaveOptions(OPTION *O)
     char dirl[200];
 
     strcpy(dirl, dir2);
-    strcat(dirl, "options");
+    strcat(dirl, "options.bin");
 
     if ((fPtr = fopen(dirl, "wb")) == NULL)
     {
@@ -97,7 +97,7 @@ void SaveGame(PLAYER *P)
     char dirl[200];
 
     strcpy(dirl, dir);
-    strcat(dirl, "save");
+    strcat(dirl, "save.bin");
 
     if ((fPtr = fopen(dirl, "wb")) == NULL)
     {
@@ -117,7 +117,7 @@ unsigned short int LoadGame(PLAYER *P)
     char dirl[200];
 
     strcpy(dirl, dir);
-    strcat(dirl, "save");
+    strcat(dirl, "save.bin");
 
     if ((fPtr = fopen(dirl, "rb")) == NULL)
     {
