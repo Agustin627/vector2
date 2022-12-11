@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "var.h"
+#include "vlc.h"
 #include "function.h"
 
 PLAYER P;
@@ -24,7 +25,7 @@ int main(int argc, char *argv[])
     do
     {
         system("clear");    // clear terminal
-        printf("Welcome to Vector\n\n"); 
+        printf("Welcome to Vector2\n\n"); 
         menu();
         printf("> ");
         scanf("%hu", &select);
@@ -76,5 +77,6 @@ int main(int argc, char *argv[])
         }
     } while (select > 4);
 
+    exit_vlc();
     exit(EXIT_SUCCESS);
 }

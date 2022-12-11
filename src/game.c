@@ -1,4 +1,5 @@
 #include "var.h"
+#include "vlc.h"
 #include "function.h"
 #include <ncurses.h>
 #include <unistd.h>
@@ -8,10 +9,12 @@ void ngame(PLAYER *P)
 {
     unsigned short int sel;
 
+    init_vlc();
+    sleep(1);
     system("clear");
     printf("Nickname (Max 20 characters): ");
     setbuf(stdin, NULL);    // clear stdin buffer
-    scanf("%s", P->name);   // introduce player's name
+    gets(P->name);   // introduce player's name
     printf("Choose your color:\n");
     printf("1. Yellow\n2. Green\n3. Blue\n4. Red\n");
     printf("> ");
@@ -131,6 +134,7 @@ void start()
     }
     clear();
     refresh();
+    exit_vlc();
     endwin();                      // end ncurses
     system("clear");
 

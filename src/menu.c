@@ -1,4 +1,5 @@
 #include "var.h"
+#include "vlc.h"
 #include "function.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,9 +26,14 @@ void setmusic(OPTION *O)
     system("clear");
 
     if (O->mstate == OFF)
+    {
         printf("Music OFF\n");
+        exit_vlc();
+    }
     else
+    {
         printf("Music ON\n");
+    }
 
     printf("1. Change\n0. Exit\n\n");
     printf("> ");
