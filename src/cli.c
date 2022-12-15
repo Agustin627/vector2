@@ -9,22 +9,40 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "var.h"
 #include "function.h"
+
+typedef struct version
+{
+    char namever[15];
+    char builver[60];
+    char copyver[60];
+    char licever[90];
+    char typever[70];
+    char garaver[70];
+} version;
+
+version v;
+
+void VerSaveVar(void)
+{
+    strcpy(v.namever, "cmath 0.3\n");
+    strcpy(v.builver, "This program was built for x86_64-pc-linux-gnu\n");
+    strcpy(v.copyver, "Copyright (C) 2022-2022 Aarch-64 & xdanep.\n");
+    strcpy(v.licever, "GPLv3+ License: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\n");
+    strcpy(v.typever, "This is free software: anyone is free to redistribute and modify it.\n");
+    strcpy(v.garaver, "There is no WARRANTY, up to the limits permitted by applicable laws.\n");
+}
 
 void cmd(int argc, char *argv[])
 {
     (void)argc;
-
+  
+    VerSaveVar();
+  
     char ver[] = "--version";
     char hel[] = "--help";
-
-    char namever[] = "cmath 0.3\n";
-    char builver[] = "This program was built for x86_64-pc-linux-gnu\n";
-    char copyver[] = "Copyright (C) 2022-2022 Aarch-64 | xdanep.\n";
-    char licever[] = "GPLv3+ License: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\n";
-    char typever[] = "This is free software: anyone is free to redistribute and modify it.\n";
-    char garaver[] = "There is no WARRANTY, up to the limits permitted by applicable laws.\n";
     
     if (argc==2)
     {
@@ -36,7 +54,7 @@ void cmd(int argc, char *argv[])
         }
         else if (!strcmp(argv[1], ver)) // display program version
         {
-            printf("%s%s%s%s%s%s",namever,builver,copyver,licever,typever,garaver);
+            printf("%s%s%s%s%s%s",v.namever,v.builver,v.copyver,v.licever,v.typever,v.garaver);
             exit(EXIT_SUCCESS);
         }
     }
