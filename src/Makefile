@@ -34,9 +34,10 @@ run:
 
 install:
 
-	-sudo cp vector /usr/bin/ -r
-	-sudo cp misc/logo.png /usr/share/icons/ -r
-	-sudo cp misc/vector.desktop /usr/share/applications/ -r
+	-sudo cp ../vector /usr/bin/ -r
+	-sudo cp ../misc/logo.png /usr/share/icons/ -r
+	-sudo cp ../misc/vector.desktop /usr/share/applications/ -r
+	@cp ../songs/ $(HOME)/.vector/resourses/ -r
 
 uninstall:
 	-sudo rm /usr/bin/vector -r

@@ -10,11 +10,13 @@
 #include <stdio.h>
 
 #include "include/var.h"
+#include "include/function.h"
 
 #define VECTOR_NAME "vector"
 #define VECTOR_VERSION "0.2.1"
 
 VERSION V;
+
 FILE *verfile;
 
 void VerSaveVar(void)

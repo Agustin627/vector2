@@ -45,11 +45,11 @@ typedef struct version
     char licever[90];
     char typever[70];
     char garaver[70];
-} version;
+} VERSION;
 
 extern PLAYER P;
 extern OPTION O;
-extern version V;
+extern VERSION V;
 extern char dir[100];
 extern char dir2[100];
 extern char ini_music[100];
