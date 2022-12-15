@@ -33,9 +33,24 @@ typedef struct
     char name[21];
 } PLAYER;
 
+typedef struct version
+{
+    char version[20];
+    char help[20];
+    //
+    char namever[10];
+    char verver[10];
+    char builver[60];
+    char copyver[60];
+    char licever[90];
+    char typever[70];
+    char garaver[70];
+} version;
+
 extern PLAYER P;
 extern OPTION O;
 extern char dir[200];
 extern char dir2[200];
+extern version v;
 
 #endif // HEADER_LIBRARY
