@@ -51,6 +51,6 @@ extern PLAYER P;
 extern OPTION O;
 extern char dir[200];
 extern char dir2[200];
-extern version v;
+extern version V;
 
 #endif // HEADER_LIBRARY
