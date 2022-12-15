@@ -1,3 +1,11 @@
+// 
+// version.c
+// vector
+//
+// Created by Aarch-64 on 15/12/2022
+// Copyright © 2022 Aarch-64. All rights reserved.
+//
+
 #include <string.h>
 #include <stdio.h>
 #include "var.h"
