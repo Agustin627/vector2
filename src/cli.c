@@ -1,3 +1,11 @@
+// 
+// cmd.c
+// cmath
+//
+// Created by Aarch-64 on 8/12/2022
+// Copyright © 2022 Aarch-64. All rights reserved.
+//
+
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
