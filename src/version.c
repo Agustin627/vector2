@@ -14,7 +14,7 @@
 #define VECTOR_NAME "vector"
 #define VECTOR_VERSION "0.2.1"
 
-version V;
+VERSION V;
 FILE *verfile;
 
 void VerSaveVar(void)

@@ -45,12 +45,12 @@ typedef struct version
     char licever[90];
     char typever[70];
     char garaver[70];
-} version;
+} VERSION;
 
 extern PLAYER P;
 extern OPTION O;
+extern VERSION V;
 extern char dir[200];
 extern char dir2[200];
-extern version V;
 
 #endif // HEADER_LIBRARY
