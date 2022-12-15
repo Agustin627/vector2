@@ -1,28 +1,24 @@
-#include "var.h"
-#include "vlc.h"
-#include "function.h"
 #include <ncurses.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
 
+#include "include/var.h"
+#include "include/function.h"
+
 void ngame(PLAYER *P)
 {
     unsigned short int sel;
-    
-    init_music();
-    sleep(1);
+
     system("clear");
     printf("Nickname (Max 20 characters): ");
     setbuf(stdin, NULL);    // clear stdin buffer
     fgets(P->name, 20, stdin);   // introduce player's name
     strtok(P->name, "\n"); // clear \n of fgets
     printf("Choose your color:\n");
-    printf("1. Yellow\n2. Green\n3. Blue\n4. Red\n");
+    printf("1. Yellow\n2. Green\n3. Blue\n4. Red\n\n");
     printf("> ");
     scanf("%hu", &sel);     // introduce player's color
-    exit_vlc();
-    game_music();
 
     if (sel == 1)
         P->cstate = (COLOR)3; // yellow
@@ -50,6 +46,8 @@ void start()
     int dim_x, dim_y;                       // windows dimensions
 
     initscr();                              // start ncurses
+    if(O.mstate) 
+    game_music();                           // start music
 
     getmaxyx(stdscr, dim_y, dim_x);         // get windows dimensions
 
@@ -77,12 +75,12 @@ void start()
     cbreak();                               // instant push
     refresh();                              // update window's info
 
-    x = 2;
-    y = 2;
+    x = dim_x/2;
+    y = dim_y/2;
     move(y, x);
 
     curs_set(0);                            // remove cursor
-    printw("^");
+    printw("*");
 
     while (1)
     {
@@ -92,42 +90,42 @@ void start()
         if (key == KEY_UP) // up
         {
             move(y, x);
-            printw(" ");
+            printw("*");
             y--;
             if (y == 1)
                 y++;
             move(y, x);
-            printw("^");
+            printw("*");
         }
         if (key == KEY_DOWN) // down
         {
             move(y, x);
-            printw(" ");
+            printw("*");
             y++;
             if (y == (dim_y - 1))
-            y--;
+                y--;
             move(y, x);
-            printw("v");
+            printw("*");
         }
         if (key == KEY_LEFT) // left
         {
             move(y, x);
-            printw(" ");
+            printw("*");
             x--;
             if (x == 0)
                 x++;
             move(y, x);
-            printw("<");
+            printw("*");
         }
         if (key == KEY_RIGHT) // right
         {
             move(y, x);
-            printw(" ");
+            printw("*");
             x++;
             if (x == (dim_x - 2))
                 x--;
             move(y, x);
-            printw("> ");
+            printw("*");
         }
         refresh();
         if (key == 27)
@@ -136,10 +134,17 @@ void start()
             break;
         }
     }
+    
+    if(O.mstate)
+    {
+        exit_vlc();
+        init_music();
+    }
+
     clear();
     refresh();
     endwin();                      // end ncurses
     system("clear");
 
-  return;
+    return;
 }

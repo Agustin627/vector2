@@ -27,7 +27,7 @@ main: $(OBJS)
 	$(CC) $(CFLAGS) -o ../vector $(OBJS) $(CLIBS)
 	
 clean:
-	@rm -rf cli.o files.o game.o main.o menu.o vlc.o ../vector
+	@rm -rf cli.o version.o files.o game.o main.o menu.o vlc.o ../vector
 	
 run: 
 	@.././vector

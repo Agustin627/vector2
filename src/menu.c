@@ -1,8 +1,8 @@
-#include "var.h"
-#include "vlc.h"
-#include "function.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "include/var.h"
+#include "include/function.h"
 
 void init_option(OPTION *O)
 {
@@ -26,14 +26,9 @@ void setmusic(OPTION *O)
     system("clear");
 
     if (O->mstate == OFF)
-    {
         printf("Music OFF\n");
-        exit_vlc();
-    }
     else
-    {
         printf("Music ON\n");
-    }
 
     printf("1. Change\n0. Exit\n\n");
     printf("> ");
@@ -45,11 +40,14 @@ void setmusic(OPTION *O)
         {
             O->mstate = (MUSIC)1;
             printf("Music On\n");
+            init_music();
         }
         else
         {
             O->mstate = (MUSIC)0;
             printf("Music OFF\n");
+            exit_vlc();
+            
         }
     }
     else if (sel == 0)

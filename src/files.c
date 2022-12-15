@@ -1,11 +1,12 @@
-#include "var.h"
-#include "function.h"
 #include <stdio.h>
 #include <unistd.h>
 #include <errno.h>
 #include <string.h>
 #include <stdlib.h>
 #include <sys/stat.h>
+
+#include "include/var.h"
+#include "include/function.h"
 
 void init_dir()
 {
@@ -40,6 +41,27 @@ void init_dir()
     }
 
     strcpy(dir2, dir);
+    strcat(dir2, "resourses/");
+
+    if (mkdir(dir2, S_IRWXU | S_IRWXG | S_IRWXO) == -1) // game music folder
+    {
+        if (errno != EEXIST)
+        {
+            printf("Error: %s, enter to exit\n", strerror(errno));
+            getchar();
+        }
+    }
+
+    system("cp ../songs/cubez0r.xm ~/.vector/resourses/");
+    system("cp ../songs/SelfControl.mp3 ~/.vector/resourses/");
+
+    strcpy(ini_music, dir2);
+    strcat(ini_music, "cubez0r.xm");
+
+    strcpy(g_music, dir2);
+    strcat(g_music, "SelfControl.mp3");
+
+    strcpy(dir2, dir);
     strcat(dir2, "conf/");
 
     if (mkdir(dir2, S_IRWXU | S_IRWXG | S_IRWXO) == -1) // game configurations folder
@@ -69,6 +91,9 @@ void LoadOptions(OPTION *O)
         fread(O, sizeof(OPTION), 1, fPtr);
 
     fclose(fPtr);
+
+    if(O->mstate)
+    init_music();
 }
 
 void SaveOptions(OPTION *O)

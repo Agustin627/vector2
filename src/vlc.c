@@ -9,17 +9,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 #include <vlc/vlc.h>
 
-#include "vlc.h"
+#include "include/function.h"
 
 libvlc_instance_t *inst;
 libvlc_media_player_t *mp;
 libvlc_media_t *m;
-
-char ini_music[] = "../songs/cubez0r.xm";
-char g_music[] = "../songs/SelfControl.mp3";
 
 void init_vlc(void)
 {

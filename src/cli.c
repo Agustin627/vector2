@@ -10,10 +10,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "var.h"
-#include "function.h"
+#include "include/var.h"
+#include "include/function.h"
 
-void cmd(int argc, char *argv[])
+void cli(int argc, char *argv[])
 {
     (void)argc;
   
@@ -21,15 +21,14 @@ void cmd(int argc, char *argv[])
       
     if (argc==2)
     {
-        if (!strcmp(argv[1], v.help)) // display help
+        if (!strcmp(argv[1], V.help)) // display help
         {
             printf("--version\t\t\tProgram version\n");
-            printf("music.mp3\t\t\tPlay the music\n");
             exit(EXIT_SUCCESS);
         }
-        else if (!strcmp(argv[1], v.version)) // display program version
+        else if (!strcmp(argv[1], V.version)) // display program version
         {
-            printf("%s%s%s%s%s%s%s",v.namever,v.verver,v.builver,v.copyver,v.licever,v.typever,v.garaver);
+            printf("%s%s%s%s%s%s%s",V.namever,V.verver,V.builver,V.copyver,V.licever,V.typever,V.garaver);
             exit(EXIT_SUCCESS);
         }
     }

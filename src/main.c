@@ -1,21 +1,24 @@
-// Version: 0.1.4
+// Version: 0.2.1
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "var.h"
-#include "vlc.h"
-#include "function.h"
+
+#include "include/var.h"
+#include "include/function.h"
 
 PLAYER P;
 OPTION O;
 
-char dir[200];
-char dir2[200];
+char dir[100];
+char dir2[100];
+
+char ini_music[100];
+char g_music[100];
 
 int main(int argc, char *argv[])
 {
-    cmd(argc, argv);
+    cli(argc, argv);
     unsigned short int select = 5, gst; //selector, game st
 
     init_option(&O);
@@ -25,7 +28,7 @@ int main(int argc, char *argv[])
     do
     {
         system("clear");    // clear terminal
-        printf("Welcome to Vector2\n\n"); 
+        printf("Welcome to Vector\n\n"); 
         menu();
         printf("> ");
         scanf("%hu", &select);
@@ -34,6 +37,10 @@ int main(int argc, char *argv[])
         {
             ngame(&P);
             SaveGame(&P);
+            
+            if(O.mstate)
+            exit_vlc();
+            
             start();
             select = 5;
         }
@@ -43,6 +50,9 @@ int main(int argc, char *argv[])
 
             if (gst)
             {
+                if(O.mstate)
+                exit_vlc();
+            
                 start();
                 select = 5;
             }
