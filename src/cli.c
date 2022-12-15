@@ -15,6 +15,9 @@
 
 typedef struct version
 {
+    char version[20];
+    char help[20];
+    //
     char namever[15];
     char builver[60];
     char copyver[60];
@@ -27,6 +30,9 @@ version v;
 
 void VerSaveVar(void)
 {
+    strcpy(v.version, "--version");
+    strcpy(v.help, "--help");
+    //
     strcpy(v.namever, "cmath 0.3\n");
     strcpy(v.builver, "This program was built for x86_64-pc-linux-gnu\n");
     strcpy(v.copyver, "Copyright (C) 2022-2022 Aarch-64 & xdanep.\n");
@@ -40,19 +46,16 @@ void cmd(int argc, char *argv[])
     (void)argc;
   
     VerSaveVar();
-  
-    char ver[] = "--version";
-    char hel[] = "--help";
-    
+      
     if (argc==2)
     {
-        if (!strcmp(argv[1], hel)) // display help
+        if (!strcmp(argv[1], v.help)) // display help
         {
             printf("--version\t\t\tProgram version\n");
             printf("music.mp3\t\t\tPlay the music\n");
             exit(EXIT_SUCCESS);
         }
-        else if (!strcmp(argv[1], ver)) // display program version
+        else if (!strcmp(argv[1], v.version)) // display program version
         {
             printf("%s%s%s%s%s%s",v.namever,v.builver,v.copyver,v.licever,v.typever,v.garaver);
             exit(EXIT_SUCCESS);
