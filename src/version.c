@@ -12,9 +12,9 @@
 #include "include/var.h"
 #include "include/function.h"
 
-#define VECTOR_NAME "Vector"
+#define PROYECT_NAME "Vector"
+#define PROYECT_VERSION "0.2.1"
 #define CODER_NAME "Olympo"
-#define VECTOR_VERSION "0.2.1"
 #define ARQUITECTURE_BUILD "x86_64-pc-linux-gnu"
 #define CONTRIBUTORS "Aarch-64 & xdanep"
 
@@ -27,10 +27,10 @@ void VerSaveVar(void)
     strcpy(V.version, "--version");
     strcpy(V.help, "--help");
     //
-    strcpy(V.namever, VECTOR_NAME);
+    strcpy(V.namever, PROYECT_NAME);
     // //
     strcat(V.namever, " ");
-    strcpy(V.verver, VECTOR_VERSION);
+    strcpy(V.verver, PROYECT_VERSION);
     // //
     strcat(V.verver, "(");
     strcpy(V.coderver, CODER_NAME);
@@ -61,11 +61,11 @@ void VerSaveVar(void)
     verfile=fopen("version.txt","w");
     
     fputs("PROYECT NAME: ", verfile);
-    fputs(VECTOR_NAME, verfile);
+    fputs(PROYECT_NAME, verfile);
     fputs("\nCODER NAME: ", verfile);
     fputs(CODER_NAME, verfile);
     fputs("\nVERSION: ", verfile);
-    fputs(VECTOR_VERSION, verfile);
+    fputs(PROYECT_VERSION, verfile);
     fputs("\nARQUITECTURE: ",verfile);
     fputs(ARQUITECTURE_BUILD, verfile);
     fputs("\nCONTRIBUTORS: ", verfile);
