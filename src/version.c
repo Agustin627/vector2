@@ -28,12 +28,14 @@ void VerSaveVar(void)
     strcpy(V.help, "--help");
     //
     strcpy(V.namever, VECTOR_NAME);
+    // //
     strcat(V.namever, " ");
     strcpy(V.verver, VECTOR_VERSION);
+    // //
     strcat(V.verver, "(");
-    strcat(V.verver, CODER_NAME);
-    strcat(V.verver, ")");
-    strcat(V.verver, "\n");
+    strcpy(V.coderver, CODER_NAME);
+    strcat(V.coderver, ")");
+    strcat(V.coderver, "\n");
     //
     strcpy(V.builver, "This program was built for");
     strcat(V.builver, " ");

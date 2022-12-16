@@ -40,6 +40,7 @@ typedef struct version
     //
     char namever[10];
     char verver[20];
+    char coderver[20];
     char builver[70];
     char copyver[70];
     char licever[90];
