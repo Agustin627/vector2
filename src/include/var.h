@@ -39,9 +39,9 @@ typedef struct version
     char help[20];
     //
     char namever[10];
-    char verver[10];
-    char builver[60];
-    char copyver[60];
+    char verver[20];
+    char builver[70];
+    char copyver[70];
     char licever[90];
     char typever[70];
     char garaver[70];

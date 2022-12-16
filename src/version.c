@@ -2,7 +2,7 @@
 // version.c
 // vector
 //
-// Created by Aarch-64 on 15/12/2022
+// Created by Aarch-64 on 8/12/2022
 // Copyright © 2022 Aarch-64. All rights reserved.
 //
 
@@ -12,8 +12,11 @@
 #include "include/var.h"
 #include "include/function.h"
 
-#define VECTOR_NAME "vector"
+#define VECTOR_NAME "Vector"
+#define CODER_NAME "Olympo"
 #define VECTOR_VERSION "0.2.1"
+#define ARQUITECTURE_BUILD "x86_64-pc-linux-gnu"
+#define CONTRIBUTORS "Aarch-64 & xdanep"
 
 VERSION V;
 
@@ -27,22 +30,42 @@ void VerSaveVar(void)
     strcpy(V.namever, VECTOR_NAME);
     strcat(V.namever, " ");
     strcpy(V.verver, VECTOR_VERSION);
+    strcat(V.verver, "(");
+    strcat(V.verver, CODER_NAME);
+    strcat(V.verver, ")");
     strcat(V.verver, "\n");
-    strcpy(V.builver, "This program was built for x86_64-pc-linux-gnu");
+    //
+    strcpy(V.builver, "This program was built for");
+    strcat(V.builver, " ");
+    strcat(V.builver, ARQUITECTURE_BUILD);
     strcat(V.builver, "\n");
-    strcpy(V.copyver, "Copyright (C) 2022-2022 Aarch-64 & xdanep.");
+    //
+    strcpy(V.copyver, "Copyright (C) 2022-2022");
+    strcat(V.copyver, " ");
+    strcat(V.copyver, CONTRIBUTORS);
+    strcat(V.copyver, ".");
     strcat(V.copyver, "\n");
+    //
     strcpy(V.licever, "GPLv3+ License: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>");
     strcat(V.licever, "\n\n");
+    //
     strcpy(V.typever, "This is free software: anyone is free to redistribute and modify it.");
     strcat(V.typever, "\n");
+    //
     strcpy(V.garaver, "There is no WARRANTY, up to the limits permitted by applicable laws.");
     strcat(V.garaver, "\n");
+    //
     
     verfile=fopen("version.txt","w");
     
     fputs("PROYECT NAME: ", verfile);
     fputs(VECTOR_NAME, verfile);
-    fputs("\nPROYECT VERSION: ", verfile);
+    fputs("\nCODER NAME: ", verfile);
+    fputs(CODER_NAME, verfile);
+    fputs("\nVERSION: ", verfile);
     fputs(VECTOR_VERSION, verfile);
+    fputs("\nARQUITECTURE: ",verfile);
+    fputs(ARQUITECTURE_BUILD, verfile);
+    fputs("\nCONTRIBUTORS: ", verfile);
+    fputs(CONTRIBUTORS, verfile);
 }
