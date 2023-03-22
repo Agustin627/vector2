@@ -42,38 +42,6 @@ void arguments(char *cmd_argv[], int cmd_argv_cnt)
     cmd_argv[cmd_argv_cnt++] = "-v" ;	        /* - Argument 3 */
 }
 
-bool exec_argv(int mode, char *argv, char *cmd_argv, char *str)
-{       
-        bool init_status = false;
-        
-        if ((strcmp(argv, cmd_argv) == 0))
-        {
-          if (mode == 0)
-          {
-          printf("%s", str);
-          init_status = true;
-          }
-          else if (mode == 1)
-          {
-            show_version();
-            extended();
-            init_status = true;
-          }
-        }
-        if (init_status == true)
-            exit(EXIT_SUCCESS);
-            
-        return init_status;
-}
-
-bool exit_argv(bool init_status)
-{
-  if (init_status == false)
-      exit(EXIT_FAILURE);
-    
-  return init_status;
-}
-
 void			/* - Exit status */
 cmd(int  argc,		/* - Number of command-line arguments (1 or 2) */
      char *argv[])	/* - Command-line arguments */
@@ -88,17 +56,33 @@ cmd(int  argc,		/* - Number of command-line arguments (1 or 2) */
         arguments(cmd_argv, cmd_argv_cnt);      /* - Write arguments */
           
         // HELP
-        init_status = exec_argv(0, argv[1], cmd_argv[0], "--version\t\t\tProgram version\n");
+        if ((strcmp(argv, cmd_argv[0]) == 0))
+        { 
+          printf("--version\t\t\tProgram version\n")      
+        }
         
-        init_status = exec_argv(0, argv[1], cmd_argv[1], "--version\t\t\tProgram version\n");
-
+        if ((strcmp(argv, cmd_argv[1]) == 0))
+        { 
+          printf("--version\t\t\tProgram version\n")      
+        }
 
         // VERSION
-        init_status = exec_argv(1, argv[1], cmd_argv[2], NULL);
+        if ((strcmp(argv, cmd_argv[2]) == 0))
+        { 
+          show_version();
+          extended();      
+        }
         
-        init_status = exec_argv(1, argv[1], cmd_argv[3], NULL);
-        
-        exit_argv(init_status);
+        if ((strcmp(argv, cmd_argv[3]) == 0))
+        { 
+          show_version();
+          extended();      
+        }
+
+        else
+        {
+          exit(EXIT_FAILURE);
+        }
           
     }
     
